@@ -295,9 +295,8 @@ vagrant@istio-cluster:~/kind-demo/hellocloud-native-box/istio-cop/1-start-istio/
 ```
 
 > istio-in-action ⇒ test3
-> 
-
-
+>
+```yaml
 vagrant@istio-cluster:~/kind-demo$ kubectl exec -it sleep-66b45d6984-xr6sc -n istio-in-action -- curl http://web-api.test3:8080
 {
   "name": "web-api",
@@ -343,7 +342,6 @@ vagrant@istio-cluster:~/kind-demo$ kubectl exec -it sleep-66b45d6984-xr6sc -n is
   "code": 200
 }
 ```
-
 > test3 ⇒ istio-in-action
 > 
 
@@ -352,7 +350,6 @@ vagrant@istio-cluster:~$ kubectl exec -it sleep-6ffdd98f9f-xqbbl -n test3 -- cur
 curl: (56) Recv failure: Connection reset by peer
 command terminated with exit code 56
 ```
-
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/f3279f70-d2ac-431a-bb79-abe639f12fb2)
 
 
@@ -475,7 +472,8 @@ ion:8080
   "code": 200
 }
 ```
-![Uploading image.png…]()
+![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/926929f0-ea5a-47f8-84cb-93ff896df1b3)
+
 
 
 
