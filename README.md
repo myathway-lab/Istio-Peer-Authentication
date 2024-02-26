@@ -353,7 +353,8 @@ curl: (56) Recv failure: Connection reset by peer
 command terminated with exit code 56
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f020007f-666a-401f-b7a3-4c1d3d9787c0/77805e77-b88b-4c26-b342-fab797e9d8de/Untitled.png)
+![Uploading image.png…]()
+
 
 ### Test Scenario 4
 
