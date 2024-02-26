@@ -274,30 +274,30 @@ We will use “peerauthentications” for pods communication.
 - Create test3 namespace
 - Deploy application in test3.
 
-
-vagrant@istio-cluster:~$ kubectl get po -n istio-in-action
+```yaml
+vagrant@istio-cluster:~/kind-demo/hellocloud-native-box/istio-cop/1-start-istio/sample-apps$ kubectl get po -n istio-in-action
 NAME                                   READY   STATUS    RESTARTS   AGE
 purchase-history-v1-75559f9c4f-hpfmf   2/2     Running   0          76m
 recommendation-dbd4c764d-npjtm         2/2     Running   0          76m
 sleep-66b45d6984-xr6sc                 2/2     Running   0          76m
 web-api-5d758fb95-9bfn8                2/2     Running   0          76m
-vagrant@istio-cluster:~$ kubectl get po -n test3
+vagrant@istio-cluster:~/kind-demo/hellocloud-native-box/istio-cop/1-start-istio/sample-apps$ kubectl get po -n test3
 NAME                                  READY   STATUS    RESTARTS   AGE
 purchase-history-v1-fc9446597-tthb9   1/1     Running   0          33s
 recommendation-bb5cbdc9d-bpzzl        1/1     Running   0          61s
 web-api-7c9755c6d-p7fcl               1/1     Running   0          54s
-vagrant@istio-cluster:~$  kubectl get peerauthentication -n istio-in-action
+vagrant@istio-cluster:~/kind-demo/hellocloud-native-box/istio-cop/1-start-istio/sample-apps$ kubectl get peerauthentication -n istio-in-action
 NAME      MODE     AGE
 default   STRICT   8m50s
-vagrant@istio-cluster:~$ kubectl get peerauthentication -n test3
+vagrant@istio-cluster:~/kind-demo/hellocloud-native-box/istio-cop/1-start-istio/sample-apps$ kubectl get peerauthentication -n test3
 No resources found in test3 namespace.
-vagrant@istio-cluster:~$ 
+vagrant@istio-cluster:~/kind-demo/hellocloud-native-box/istio-cop/1-start-istio/sample-apps$
 ```
 
 > istio-in-action ⇒ test3
 > 
 
-```yaml
+
 vagrant@istio-cluster:~/kind-demo$ kubectl exec -it sleep-66b45d6984-xr6sc -n istio-in-action -- curl http://web-api.test3:8080
 {
   "name": "web-api",
@@ -353,7 +353,7 @@ curl: (56) Recv failure: Connection reset by peer
 command terminated with exit code 56
 ```
 
-![Uploading image.png…]()
+![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/f3279f70-d2ac-431a-bb79-abe639f12fb2)
 
 
 ### Test Scenario 4
@@ -475,8 +475,8 @@ ion:8080
   "code": 200
 }
 ```
+![Uploading image.png…]()
 
-![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/a7a1b3b0-3410-47b2-b133-cb382e36f1c1)
 
 
 ### Test Scenario 5
