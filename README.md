@@ -15,7 +15,8 @@ kubectl label namespace istio-in-action istio-injection=enabled
 
 2) deploy the sample application in test1.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f020007f-666a-401f-b7a3-4c1d3d9787c0/df02c8ac-8486-475d-a839-229821d66f74/Untitled.png)
+![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/11cbfb04-1907-48d6-8f40-c77871646485)
+
 
 Let’s verify if we can access the application each other. 
 
@@ -120,7 +121,8 @@ vagrant@istio-cluster:~$ kubectl exec -it  sleep-6ffdd98f9f-lvhn5 -n test1 -- cu
 }
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f020007f-666a-401f-b7a3-4c1d3d9787c0/5e8313b2-8a62-4467-a93c-0c98826cbd21/Untitled.png)
+![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/c51ca5af-0691-47c6-af3d-df8306196c47)
+
 
 ### Test Scenario 2
 
@@ -130,7 +132,8 @@ vagrant@istio-cluster:~$ kubectl exec -it  sleep-6ffdd98f9f-lvhn5 -n test1 -- cu
 
 3) deploy the applications. 
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f020007f-666a-401f-b7a3-4c1d3d9787c0/79a70c4e-8c36-44c6-bb09-034bf72b5b5b/Untitled.png)
+![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/4dbc8413-848c-4c0d-8500-d2032a61c0f5)
+
 
 Let’s verify if the applications are able to access. 
 
@@ -234,7 +237,8 @@ vagrant@istio-cluster:~$ kubectl exec -it sleep-76878f8d59-5qk79 -n test2 -- cur
 }
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f020007f-666a-401f-b7a3-4c1d3d9787c0/18aa6020-aa0e-4185-a438-a8f4c7f2d665/Untitled.png)
+![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/035bae09-6b91-44a8-860a-8a8aa8b89b4f)
+
 
 <aside>
 💡 Even though the Istio Injection is enabled, since we haven’t configured Istio to do Istio provided functions, the pods are still able to access.
@@ -245,7 +249,8 @@ vagrant@istio-cluster:~$ kubectl exec -it sleep-76878f8d59-5qk79 -n test2 -- cur
 
 We will use “peerauthentications” for pods-to-pods communication. 
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f020007f-666a-401f-b7a3-4c1d3d9787c0/39efdf85-0ceb-44cb-9276-2b6c69e2f3a6/Untitled.png)
+![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/245543c9-5aef-4d64-b4a6-61eca20cb38f)
+
 
 - peerauth.yaml
     
