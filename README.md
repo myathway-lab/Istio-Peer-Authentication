@@ -5,7 +5,7 @@
 **And I will add PeerAuthentication to allow mTLS traffic for all workloads under namespace.** 
 
 <aside>
-💡 **PeerAuthentication defines how traffic will be tunneled (or not) to the sidecar.**💡
+💡 PeerAuthentication defines how traffic will be tunneled (or not) to the sidecar.💡
  
 </aside>
 
