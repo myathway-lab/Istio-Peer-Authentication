@@ -3,25 +3,19 @@
 
 ### Test Scenario 1
 
-1)
-- Create istio-in-action namespace. 
-- Enable injection  
+- Create istio-in-action namespace.
+- Enable injection.
+- deploy the sample application in Istio-in-action.
 
-```yaml
-kubectl label namespace istio-in-action istio-injection=enabled
-```
+- Create test1 namespace.
+- Deploy the sample application in test1.
 
-- deploy the sample application in istio-in-action.
-
-2)
-- Create test1 namespace. 
-- deploy the sample application in test1.
 
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/11cbfb04-1907-48d6-8f40-c77871646485)
 
 
-Let’s verify if the application can access each other. 
-
+- Let’s verify if we can access the application each other.
+  
 > istion-in-action ⇒ test1
 > 
 
@@ -128,16 +122,15 @@ vagrant@istio-cluster:~$ kubectl exec -it  sleep-6ffdd98f9f-lvhn5 -n test1 -- cu
 
 ### Test Scenario 2
 
-1)
 - Create two namespaces
-- Inject the Istio in both namespaces. 
-- deploy the applications on both namespces. 
+- Inject the Istio.
+- deploy the applications.
 
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/4dbc8413-848c-4c0d-8500-d2032a61c0f5)
 
 
-Let’s verify if the applications can access each other. 
-
+- Let’s verify if the applications are able to access.
+  
 > istio-in-action ⇒ test2
 > 
 
@@ -249,17 +242,10 @@ vagrant@istio-cluster:~$ kubectl exec -it sleep-76878f8d59-5qk79 -n test2 -- cur
 
 ### Test Scenario 3
 
-We will use “peerauthentications” for pods communication. 
+**We will use below Policy to allow mTLS traffic for all workloads under namespace istio-in-action.**
 
-![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/245543c9-5aef-4d64-b4a6-61eca20cb38f)
-
-1)
-- Create istio-in-action namespace.
-- Inject istio.
-- Deploy applications.
-- Enable PeerAuth in istio-in-action.
-
-- peerauth.yaml   
+- peerauth.yaml
+    
     ```yaml
     apiVersion: security.istio.io/v1beta1
     kind: PeerAuthentication
@@ -270,29 +256,26 @@ We will use “peerauthentications” for pods communication.
         mode: STRICT
     ```
 
-2)
-- Create test3 namespace
-- Deploy application in test3.
-
 ```yaml
-vagrant@istio-cluster:~/kind-demo/hellocloud-native-box/istio-cop/1-start-istio/sample-apps$ kubectl get po -n istio-in-action
+vagrant@istio-cluster:~$ kubectl get po -n istio-in-action
 NAME                                   READY   STATUS    RESTARTS   AGE
 purchase-history-v1-75559f9c4f-hpfmf   2/2     Running   0          76m
 recommendation-dbd4c764d-npjtm         2/2     Running   0          76m
 sleep-66b45d6984-xr6sc                 2/2     Running   0          76m
 web-api-5d758fb95-9bfn8                2/2     Running   0          76m
-vagrant@istio-cluster:~/kind-demo/hellocloud-native-box/istio-cop/1-start-istio/sample-apps$ kubectl get po -n test3
+vagrant@istio-cluster:~$  kubectl get po -n test3
 NAME                                  READY   STATUS    RESTARTS   AGE
 purchase-history-v1-fc9446597-tthb9   1/1     Running   0          33s
 recommendation-bb5cbdc9d-bpzzl        1/1     Running   0          61s
 web-api-7c9755c6d-p7fcl               1/1     Running   0          54s
-vagrant@istio-cluster:~/kind-demo/hellocloud-native-box/istio-cop/1-start-istio/sample-apps$ kubectl get peerauthentication -n istio-in-action
+vagrant@istio-cluster:~$ kubectl get peerauthentication -n istio-in-action
 NAME      MODE     AGE
 default   STRICT   8m50s
-vagrant@istio-cluster:~/kind-demo/hellocloud-native-box/istio-cop/1-start-istio/sample-apps$ kubectl get peerauthentication -n test3
+vagrant@istio-cluster:~$ kubectl get peerauthentication -n test3
 No resources found in test3 namespace.
-vagrant@istio-cluster:~/kind-demo/hellocloud-native-box/istio-cop/1-start-istio/sample-apps$
 ```
+
+
 
 > istio-in-action ⇒ test3
 >
@@ -354,7 +337,7 @@ command terminated with exit code 56
 
 
 ### Test Scenario 4
-
+We will inject istio in test3 namespace & see if able to access. 
 ```yaml
 vagrant@istio-cluster:~$ kubectl label ns test3 istio-injection=enabled
 vagrant@istio-cluster:~$ kubectl get po -n test3
@@ -478,6 +461,9 @@ ion:8080
 
 
 ### Test Scenario 5
+**We will enable PeerAuthentication in Istio-System.** 
+
+**Once we enabled the PeerAuth in Istio-system, all the namespaces automatically get PeerAuth.**
 
 ```yaml
 vagrant@istio-cluster:~/kind-demo$ kubectl apply -f peerauth.yaml -n istio-system
@@ -555,6 +541,8 @@ command terminated with exit code 56
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/f36822b7-4d0c-4d6a-a72d-e25172cf2f3d)
 
 ### Test Scenario 6
+
+Since we enabled the PeerAuth in Istio-system, all the namespaces have PeerAuth enabled. 
 
 - Inject the Istio in test4 namespace
 - Then verify the connection is success.
