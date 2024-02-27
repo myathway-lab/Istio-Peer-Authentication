@@ -556,8 +556,8 @@ command terminated with exit code 56
 
 ### Test Scenario 6
 
-Inject the Istio in test4 namespace. 
-Then verify the access is working. 
+- Inject the Istio in test4 namespace
+- Then verify the connection is success.
 
 ```yaml
 
