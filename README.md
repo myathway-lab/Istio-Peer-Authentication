@@ -662,3 +662,25 @@ vagrant@istio-cluster:~/kind-demo$ kubectl exec -it sleep-69d4cbb598-wkpbr -n te
 ```
 
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/b86a48c7-764c-4735-abef-35d0c62eda77)
+
+
+
+
+
+### Test Scenario 7
+
+
+![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/3c7e6994-e1c4-4c1e-8336-2d24c73c5979)
+
+
+### Test Scenario 8
+
+![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/df041369-e516-4bbc-a03a-5915c9fffeeb)
+
+### Test Scenario 9
+
+![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/2814ab4f-3d0f-4d71-b54a-fb815271ffdd)
+
+### Test Scenario 10
+![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/c544495e-1f22-4feb-bec7-531dd40660f7)
+
