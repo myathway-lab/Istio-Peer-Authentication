@@ -1,15 +1,26 @@
 # Istio-Peer-Authentication
 
-**In this lab, I will test step by step to enable Istio Injection on namespaces.**
+**In this lab, I will test Istio Injection + PeerAuthentication using multiple Scenatios.**
 
-**And I will add PeerAuthentication to allow mTLS traffic for all workloads under namespace.** 
 
-<aside>
-💡 PeerAuthentication defines how traffic will be tunneled (or not) to the sidecar.💡
+### *PeerAuthentication allows mTLS traffic for all workloads under namespace.  It defines how traffic will be tunneled (or not) to the sidecar.*
+
+### Summary
+
+1) Test Scenario 1 - Istio Injected app  <=> Non-Istio  <br>
+2) Test Scenario 2 - Istio Injected app  <=> Istio Injected app  <br>
+3) Test Scenario 3 - Istio Injected + PeerAuth app <=> Non-Istio   <br>
+4) Test Scenario 4 - Istio Injected + PeerAuth app  <=> Istio Injected  <br>
+5) Test Scenario 5 - PeerAuth to (Istio-System ns), Istio Injected <=> Non-Istio   <br>
+6) Test Scenario 6 - PeerAuth to (Istio-System ns), Istio Injected <=> Istio Injected  <br>
+7) Test Scenario 7 - PeerAuth app  <=> PeerAuth  <br>
+8) Test Scenario 8 - Istio Injected + PeerAuth app <=> PeerAuth app  <br>
+9) Test Scenario 9 - Istio Injected + PeerAuth app <=> Istio Injected + PeerAuth app  <br>
+10) Test Scenario 10 - Istio Injected app  <=> PeerAuth  <br>
+
+ <br>
  
-</aside>
-
-### Test Scenario 1
+### 1) Test Scenario 1
 
 - Create istio-in-action namespace.
 - Enable injection.
@@ -21,8 +32,9 @@
 
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/11cbfb04-1907-48d6-8f40-c77871646485)
 
-
-- Let’s verify if we can access the application each other.
+ <br>
+ 
+- Let’s verify if the app from both namespaces can access each other.
   
 > istion-in-action ⇒ test1
 > 
@@ -127,8 +139,9 @@ vagrant@istio-cluster:~$ kubectl exec -it  sleep-6ffdd98f9f-lvhn5 -n test1 -- cu
 
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/c51ca5af-0691-47c6-af3d-df8306196c47)
 
+<br>
 
-### Test Scenario 2
+### 2) Test Scenario 2
 
 - Create two namespaces
 - Inject the Istio.
@@ -247,6 +260,7 @@ vagrant@istio-cluster:~$ kubectl exec -it sleep-76878f8d59-5qk79 -n test2 -- cur
 
 </aside>
 
+<br>
 
 ### Test Scenario 3
 
@@ -343,8 +357,9 @@ command terminated with exit code 56
 ```
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/f3279f70-d2ac-431a-bb79-abe639f12fb2)
 
+<br>
 
-### Test Scenario 4
+### 4) Test Scenario 4
 We will inject istio in test3 namespace & see if able to access. 
 ```yaml
 vagrant@istio-cluster:~$ kubectl label ns test3 istio-injection=enabled
@@ -466,10 +481,11 @@ ion:8080
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/926929f0-ea5a-47f8-84cb-93ff896df1b3)
 
 
+<br>
 
 
-### Test Scenario 5
-**We will enable PeerAuthentication in Istio-System.** 
+### 5) Test Scenario 5
+**We will enable PeerAuthentication in Istio-System.**  <br>
 
 **Once we enabled the PeerAuth in Istio-system, all the namespaces automatically get PeerAuth.**
 
@@ -548,7 +564,9 @@ command terminated with exit code 56
 
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/f36822b7-4d0c-4d6a-a72d-e25172cf2f3d)
 
-### Test Scenario 6
+<br>
+
+### 6) Test Scenario 6
 
 Since we enabled the PeerAuth in Istio-system, all the namespaces have PeerAuth enabled. 
 
@@ -661,22 +679,28 @@ vagrant@istio-cluster:~/kind-demo$ kubectl exec -it sleep-69d4cbb598-wkpbr -n te
 
 
 
+<br>
 
 
-### Test Scenario 7
+### 7) Test Scenario 7
 
 
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/3c7e6994-e1c4-4c1e-8336-2d24c73c5979)
 
+<br>
 
-### Test Scenario 8
+### 8) Test Scenario 8
 
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/df041369-e516-4bbc-a03a-5915c9fffeeb)
 
-### Test Scenario 9
+<br>
+
+### 9) Test Scenario 9
 
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/2814ab4f-3d0f-4d71-b54a-fb815271ffdd)
 
-### Test Scenario 10
+<br>
+
+### 10) Test Scenario 10
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/c544495e-1f22-4feb-bec7-531dd40660f7)
 
