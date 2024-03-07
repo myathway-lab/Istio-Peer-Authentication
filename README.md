@@ -715,8 +715,8 @@ vagrant@istio-cluster:~/kind-demo$ kubectl exec -it sleep-69d4cbb598-wkpbr -n te
 <br>
 
 **Drawback**
-- If we never planned accordinly since beginning and if we we suddenly apply peerauth for "istio-system", some of the services may have istio injected & some may not have. <br>
-- Enabling peerauth may disrupt the server functionalities if they cannot use mTLS.
+- We should plan accordinly since beginning and if we suddenly apply peerauth for "istio-system", some of the services may have istio injected & some may not have. <br>
+- And enabling peerauth may disrupt the server functionalities if they cannot use mTLS.
 
 <br>
 
