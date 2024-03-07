@@ -1,11 +1,13 @@
 # Istio-Peer-Authentication
 
-**In this lab, I will test Istio Injection + PeerAuthentication using multiple Scenatios.**
 
+**PeerAuthentication allows mTLS traffic for all workloads under namespace.  It defines how traffic will be tunneled (or not) to the sidecar.**
 
-### *PeerAuthentication allows mTLS traffic for all workloads under namespace.  It defines how traffic will be tunneled (or not) to the sidecar.*
+<br>
 
 ### Summary
+
+In this lab, I will test Istio Injection + PeerAuthentication using multiple Scenatios.
 
 1) Test Scenario 1 - Istio Injected app  <=> Non-Istio  <br>
 2) Test Scenario 2 - Istio Injected app  <=> Istio Injected app  <br>
