@@ -17,6 +17,7 @@
 8) Test Scenario 8 - Istio Injected + PeerAuth app <=> PeerAuth app  <br>
 9) Test Scenario 9 - Istio Injected + PeerAuth app <=> Istio Injected + PeerAuth app  <br>
 10) Test Scenario 10 - Istio Injected app  <=> PeerAuth  <br>
+11) Should we use enable PeerAuth in "Istio-System"?
 
  <br>
  
@@ -704,3 +705,23 @@ vagrant@istio-cluster:~/kind-demo$ kubectl exec -it sleep-69d4cbb598-wkpbr -n te
 ### 10) Test Scenario 10
 ![image](https://github.com/myathway-lab/Istio-Peer-Authentication/assets/157335804/c544495e-1f22-4feb-bec7-531dd40660f7)
 
+
+
+### 11) Should we enable PeerAuth in "Istio-System"?
+
+**Benefit**
+- Enabling PeerAuth in "Istio-System" will enforce mTLS commnunication and only authorized servers can talk with each other within the Istio service mesh. 
+
+<br>
+
+**Drawback**
+- If we never planned accordinly since beginning and if we we suddenly apply peerauth for "istio-system", some of the services may have istio injected & some may not have. <br>
+- Enabling peerauth may disrupt the server functionalities if they cannot use mTLS.
+
+<br>
+
+**Recommendation**
+- Start with Plan
+- Not recommand to use PeerAuth in "istio-system" namespace.
+- We need to verify whether our services are istio ready and can handle mTLS.
+- It depends on the organization requirements. 
